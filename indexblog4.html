@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Sakuwaatru 的主页</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffffcc;
+      border-radius: 16px;
+      padding: 40px;
+      margin-top: 60px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    img {
+      width: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid #ffffff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .motto {
+      font-style: italic;
+      color: #666;
+      margin: 30px 0;
+    }
+
+    .section {
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    .section h2 {
+      color: #4caf50;
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    .link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 1em;
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    a.button, button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #4caf50, #66bb6a);
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    a.button:hover, button:hover {
+      background: linear-gradient(135deg, #388e3c, #4caf50);
+    }
+
+    #quote {
+      font-size: 1.1em;
+      color: #555;
+      margin-top: 15px;
+      font-style: italic;
+    }
+
+    #clock {
+      margin-top: 20px;
+      font-size: 1em;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img id="avatar" src="https://placekitten.com/200/200" alt="头像：小动物">
+    <h1>我是 sakuwataru，大家好！</h1>
+    <p>欢迎来到我的小小个人空间。</p>
+
+    <div class="motto">“慢慢来，也没关系。”</div>
+
+    <div class="section">
+      <h2>我在做什么？</h2>
+      <p>最近在学习网页开发和如何和 AI 合作做项目，目标是做出好玩又实用的小东西！</p>
+    </div>
+
+    <div class="section">
+      <h2>我喜欢的东西</h2>
+      <p>比如这首歌单，点开听听看：</p>
+      <a class="link" href="https://open.spotify.com/playlist/37i9dQZF1DXdPec7aLTmlC" target="_blank">🎧 我的歌单</a>
+    </div>
+
+    <div class="section">
+      <h2>✨ 每日一句鸡汤</h2>
+      <button onclick="showQuote()">点我获取一句话</button>
+      <div id="quote"> </div>
+    </div>
+
+    <div class="section">
+      <h2>⏰ 当前时间</h2>
+      <div id="clock">加载中...</div>
+    </div>
+
+    <a class="button" href="mailto:youremail@example.com">📧 联系我</a>
+  </div>
+
+  <script>
+    // 鸡汤列表
+    const quotes = [
+      "你努力的样子，很美。",
+      "别急，慢慢来，一切都会好。",
+      "坚持一下，就快到了。",
+      "今天也要加油鸭！",
+      "平凡的你，也有无限可能。",
+      "世界会向那些有目标和远见的人让路。"
+    ];
+
+    function showQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quote").innerText = quotes[randomIndex];
+    }
+
+    // 当前时间刷新
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById("clock").innerText = timeString;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // 初始化显示
+
+    // 鼠标移动头像轻晃动
+    const avatar = document.getElementById("avatar");
+    avatar.addEventListener("mousemove", () => {
+      avatar.style.transform = "rotate(10deg)";
+    });
+    avatar.addEventListener("mouseleave", () => {
+      avatar.style.transform = "rotate(0deg)";
+    });
+  </script>
+</body>
+</html>
